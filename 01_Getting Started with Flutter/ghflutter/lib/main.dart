@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 import 'strings.dart';
+import 'member.dart';
 
 void main() => runApp(GHFlutterApp());
 
@@ -25,7 +25,7 @@ class GHFlutter extends StatefulWidget {
 }
 
 class GHFlutterState extends State<GHFlutter> {
-  var _members = [];
+  var _members = <Member>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
@@ -60,13 +60,18 @@ class GHFlutterState extends State<GHFlutter> {
     http.Response response = await http.get(dataURL);
     // pass a callback to setState() that runs synchronously on the UI thread. I
     setState(() {
-      _members = json.decode(response.body);
+      final membersJSON = json.decode(response.body);
+
+      for (var memberJSON in membersJSON) {
+        final member = Member(memberJSON["login"]);
+        _members.add(member);
+      }
     });
   }
 
   Widget _buildRow(int i) {
     return ListTile(
-      title: Text("${_members[i]["login"]}", style: _biggerFont)
+      title: Text("${_members[i].login}", style: _biggerFont)
     );
   }
 }
