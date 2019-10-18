@@ -95,10 +95,31 @@ class GHFlutterState extends State<GHFlutterWidget> {
     });
   }
 
-  _pushMember(Member member) {
-    Navigator.push(context, 
-    MaterialPageRoute(builder: (context) => MemberWidget(member)));
-  }
+_pushMember(Member member) {
+  // ush a new PageRouteBuilder onto the stack.
+  Navigator.push(
+      context,
+      PageRouteBuilder(
+          opaque: true,
+          // Specify the duration using transitionDuration.
+          transitionDuration: const Duration(milliseconds: 1000),
+          // Create the MemberWidget screen using pageBuilder
+          pageBuilder: (BuildContext context, _, __) {
+            return MemberWidget(member);
+          },
+          // Use the transitionsBuilder to create fade and rotation transitions when showing the new route.
+          transitionsBuilder:
+              (_, Animation<double> animation, __, Widget child) {
+            return FadeTransition(
+              opacity: animation,
+              child: RotationTransition(
+                turns: Tween<double>(begin: 0.0, end: 1.0).animate(animation),
+                child: child,
+              ),
+            );
+          }));
+}
+
 }
 
 class GHFlutterWidget extends StatefulWidget {
