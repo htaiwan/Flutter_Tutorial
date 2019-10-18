@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'strings.dart';
+
 void main() => runApp(GHFlutterApp());
 
 class GHFlutterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GHFlutter',
+      title: Strings.appTitle,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('GH Flutter'),
+          title: Text(Strings.appTitle),
         ),
         body: Center(
-          child: Text('GHFlutter'),
+          child: Text(Strings.appTitle),
         ),
       ),
     );    
