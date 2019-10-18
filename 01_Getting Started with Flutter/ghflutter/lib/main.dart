@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 import 'strings.dart';
 
@@ -22,6 +25,15 @@ class GHFlutter extends StatefulWidget {
 }
 
 class GHFlutterState extends State<GHFlutter> {
+  var _members = [];
+  final _biggerFont = const TextStyle(fontSize: 18.0);
+
+  @override
+  // calls _loadData() when the state is initialized:
+  void initState() {
+    _loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
     // A Scaffold is a container for material design widgets. It acts as the root of a widget hierarchy.
@@ -31,5 +43,16 @@ class GHFlutterState extends State<GHFlutter> {
         ),
         body: Text(Strings.appTitle),
     );
+  }
+
+  // async: tell Dart that it’s asynchronous,
+  _loadData() async {
+    String dataURL = "https://api.github.com/orgs/raywenderlich/members";
+    // await: wait on the http.get()的response
+    http.Response response = await http.get(dataURL);
+    // pass a callback to setState() that runs synchronously on the UI thread. I
+    setState(() {
+      _members = json.decode(response.body);
+    });
   }
 }
