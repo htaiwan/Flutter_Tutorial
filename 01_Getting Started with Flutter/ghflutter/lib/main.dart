@@ -63,15 +63,22 @@ class GHFlutterState extends State<GHFlutter> {
       final membersJSON = json.decode(response.body);
 
       for (var memberJSON in membersJSON) {
-        final member = Member(memberJSON["login"]);
+        final member = Member(memberJSON["login"], memberJSON["avatar_url"]);
         _members.add(member);
       }
     });
   }
 
   Widget _buildRow(int i) {
-    return ListTile(
-      title: Text("${_members[i].login}", style: _biggerFont)
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ListTile(
+        title: Text("${_members[i].login}", style: _biggerFont),
+        leading: CircleAvatar(
+          backgroundColor: Colors.green,
+          backgroundImage: NetworkImage(_members[i].avatarUrl)
+        ),
+      )
     );
   }
 }
