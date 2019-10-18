@@ -27,10 +27,17 @@ class MemberState extends State<MemberWidget> {
       appBar: AppBar(
         title: Text(member.login),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Image.network(member.avatarUrl)
-        ),
+      body: Column(
+        children: [
+          Image.network(member.avatarUrl),
+          IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.green, size: 48.0),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          )
+        ],
+      )
     );
   }
 }
