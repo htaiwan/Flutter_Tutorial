@@ -36,6 +36,7 @@ import 'package:http/http.dart' as http;
 
 import 'member.dart';
 import 'strings.dart';
+import 'memberwidget.dart';
 
 class GHFlutterState extends State<GHFlutterWidget> {
   var _members = <Member>[];
@@ -75,6 +76,10 @@ class GHFlutterState extends State<GHFlutterWidget> {
           leading: CircleAvatar(
               backgroundColor: Colors.green,
               backgroundImage: NetworkImage(_members[i].avatarUrl)),
+          // 處理tap手勢
+          onTap: () {
+            _pushMember(_members[i]);
+          },
         ));
   }
 
@@ -88,6 +93,11 @@ class GHFlutterState extends State<GHFlutterWidget> {
         _members.add(member);
       }
     });
+  }
+
+  _pushMember(Member member) {
+    Navigator.push(context, 
+    MaterialPageRoute(builder: (context) => MemberWidget(member)));
   }
 }
 
