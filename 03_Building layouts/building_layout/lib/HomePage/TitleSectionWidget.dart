@@ -1,3 +1,4 @@
+import 'package:building_layout/HomePage/FavoriteWidget.dart';
 import 'package:flutter/material.dart';
 
 class TitleSectionWidget extends StatelessWidget {
@@ -34,15 +35,7 @@ class TitleSectionWidget extends StatelessWidget {
               ],
             ),
           ),
-
-          // 星星符號
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-
-          // 星星數字
-          Text('978'),
+          FavoriteWidget(),
         ],
       ),
     );
