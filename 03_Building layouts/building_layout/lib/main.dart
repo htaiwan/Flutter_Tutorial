@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'HomePage/TitleSection.dart';
-import 'HomePage/ButtonSection.dart';
-import 'HomePage/TextSection.dart';
+import 'HomePage/TitleSectionWidget.dart';
+import 'HomePage/ButtonSectionWidget.dart';
+import 'HomePage/TextSectionWidget.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
               height: 240,
               fit: BoxFit.cover,
             ),
-            TitleSection(),
-            ButtonSection(),
-            TextSection(),
+            TitleSectionWidget(),
+            ButtonSectionWidget(),
+            TextSectionWidget(),
           ],
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class TextSection extends StatelessWidget {
+class TextSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

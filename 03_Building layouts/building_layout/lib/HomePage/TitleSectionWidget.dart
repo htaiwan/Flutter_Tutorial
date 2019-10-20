@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TitleSection extends StatelessWidget {
+class TitleSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Implement the title row
