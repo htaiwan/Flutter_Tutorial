@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'TapboxA.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,7 +12,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ,
+      home: HomePage1(),
     );
   }
+}
+
+class HomePage1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('The widget manages its own state'),
+      ),
+      body: Center(
+        child: TapboxA(),
+      ),
+    );
+  }  
 }
