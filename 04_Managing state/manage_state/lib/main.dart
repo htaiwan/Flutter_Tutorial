@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'TapboxA.dart';
 import 'TapboxB.dart';
+import 'TapboxC.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage2(),
+      home: HomePage3(),
     );
   }
 }
@@ -41,6 +42,20 @@ class HomePage2 extends StatelessWidget {
       ),
       body: Center(
         child: ParentWidget(),
+      ),
+    );
+  }  
+}
+
+class HomePage3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('The parent widget manages the widget’s state'),
+      ),
+      body: Center(
+        child: ParentCWidget(),
       ),
     );
   }  
